@@ -673,7 +673,7 @@ ul {
     /* Light green bg */
     padding: 1rem;
     border-radius: var(--radius-md);
-    margin-top: 1rem;
+    margin-top: var(--spacing-md);
 }
 
 .case-result h4 {
