@@ -354,8 +354,8 @@ ul {
 }
 
 .hero__title {
-    font-size: clamp(3rem, 5vw, 4.5rem);
-    line-height: 1.1;
+    font-size: clamp(2.25rem, 6vw, 4.5rem);
+    line-height: 1.15;
     margin-bottom: var(--spacing-md);
     color: var(--color-white);
     font-weight: 800;
@@ -420,7 +420,13 @@ ul {
 
 /* General Sections */
 .section {
-    padding: var(--spacing-lg) 0;
+    padding: var(--spacing-md) 0;
+}
+
+@media (min-width: 768px) {
+    .section {
+        padding: var(--spacing-lg) 0;
+    }
 }
 
 .section-title {
@@ -587,8 +593,14 @@ ul {
 
 /* Pricing */
 .pricing-card {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
     max-width: 900px;
+}
+
+@media (min-width: 768px) {
+    .pricing-card {
+        padding: var(--spacing-lg);
+    }
 }
 
 .pricing-highlight {
@@ -899,6 +911,12 @@ ul {
     justify-content: center;
     font-size: 5rem;
     color: var(--color-secondary);
+}
+
+@media (max-width: 768px) {
+    .hero__title br {
+        display: none;
+    }
 }
 
 /* Responsive Adjustments */
