@@ -1,453 +1,518 @@
 <!DOCTYPE html>
 <html lang="cs">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dluhypomoc - Oddlužení, insolvence a pomoc s dluhy</title>
-    <meta name="description"
-        content="Jste v dluhové pasti? Pomůžeme vám, zbavíme vás dluhů a vymůžeme přeplacené úroky zpět. Profesionální oddlužení a finanční poradenství.">
-    <link rel="canonical" href="https://dluhypomoc.cz/">
-
-    <!-- SEO & Open Graph -->
+    <title>DluhyPomoc | Zbavíme vás dluhů a vymůžeme úroky zpět</title>
+    <meta name="description" content="Jste v dluhové pasti? Pomůžeme vám zrušit nevýhodné smlouvy u nebankovních společností a vymůžeme přeplacené úroky zpět. Vše zprostředkujeme.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="DluhyPomoc | Zbavíme vás dluhů">
+    <meta property="og:description" content="Pomůžeme s nebankovními půjčkami. Odměna pouze ze záchrany a vymožených peněz zisků.">
+    <meta property="og:image" content="https://www.dluhypomoc.cz/Obrazky/og-preview.png">
+    <meta property="og:url" content="https://www.dluhypomoc.cz/">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dluhypomoc.cz/">
-    <meta property="og:title" content="Dluhypomoc.cz - Pomůžeme vám z dluhové pasti">
-    <meta property="og:description"
-        content="Zbavíme vás dluhů u nebankovních společností a vymůžeme přeplacené úroky zpět. Diskrétní a ověřené řešení.">
-    <meta property="og:image" content="https://dluhypomoc.cz/Obrazky/og-preview.png">
 
+    <!-- SEO & Icons -->
+    <link rel="canonical" href="https://www.dluhypomoc.cz/">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="style.css">
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <!-- Icons & Assets -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Favicon & Mobile Icons -->
-    <link rel="icon" type="image/png" href="Obrazky/Favicon.png">
-    <link rel="apple-touch-icon" href="Obrazky/Favicon.png">
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "DluhyPomoc",
+      "url": "https://www.dluhypomoc.cz",
+      "email": "info@dluhypomoc.cz",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Švermova 268",
+        "addressLocality": "Liberec 10",
+        "postalCode": "460 10",
+        "addressCountry": "CZ"
+      },
+      "taxID": "75569965",
+      "description": "Profesionální pomoc s nebankovními dluhy a vymáhání přeplacených úroků."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Kolik mě to bude stát?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Z Vaší kapsy nepůjde ani koruna. Naši provizi si bereme z vymožených částek od úvěrujících společností."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "S jakými půjčkami mi pomůžete?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pomůžeme vám s půjčkami od nebankovních společností."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
-
 <body>
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="cookie-banner">
+        <p>Tento web používá soubory cookies k zajištění nejlepší uživatelské zkušenosti.</p>
+        <button id="accept-cookies" class="btn btn-secondary">Rozumím</button>
+    </div>
 
-    <!-- Header -->
-    <header class="header">
-        <div class="container header__container">
+    <!-- Navigace -->
+    <nav class="navbar">
+        <div class="container nav-container">
             <a href="#" class="logo">
-                <img src="Obrazky/Logo_new.png" alt="Dluhypomoc Logo" width="150" height="auto">
+                <!-- Pokud dojde logo.png, je tu i textový fallback -->
+                <img src="Obrazky/Logo_new.png" alt="DluhyPomoc Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none;" class="logo-text">DluhyPomoc</span>
             </a>
-            <nav class="nav">
-                <ul class="nav__list">
-                    <li><a href="#sluzby" class="nav__link">Služby</a></li>
-                    <li><a href="#jak-to-probiha" class="nav__link">Jak to probíhá</a></li>
-                    <li><a href="#cenik" class="nav__link">Ceník</a></li>
-                    <li><a href="#priklady" class="nav__link">Příklady z praxe</a></li>
-                    <li><a href="#recenze" class="nav__link">Recenze</a></li>
-                    <li><a href="#faq" class="nav__link">FAQ</a></li>
-                    <li><a href="#kontakt" class="nav__cta">Kontakt</a></li>
-                </ul>
-            </nav>
-            <button class="hamburger" aria-label="Menu">
+            
+            <button class="hamburger-menu" aria-label="Menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+
+            <ul class="nav-links">
+                <li><a href="#sluzby">Služby</a></li>
+                <li><a href="#postup">Jak to probíhá</a></li>
+                <li><a href="#cenik">Ceník</a></li>
+                <li><a href="#praxe">Příklady z praxe</a></li>
+                <li><a href="#recenze">Recenze</a></li>
+                <li><a href="#aktuality">Novinky</a></li>
+                <li><a href="#kontakt" class="btn btn-primary nav-btn">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Sekce inspirovaní vzorem - obří text tvořící background, glassmorphism -->
+    <header id="hero" class="hero">
+        <div class="hero-bg-text-wrapper">
+            <h1 class="hero-bg-text" aria-hidden="true">POMOC</h1>
+        </div>
+        <div class="container hero-container">
+            <div class="hero-content glass-card fade-in">
+                <h1>Jste v dluhové pasti a vyhrožují vám nebankovní společnosti?</h1>
+                <p>Pomůžeme vám, zbavíme vás dluhů a vymůžeme přeplacené úroky zpět. Jsme tu, abychom vás dostali zpět na nohy, a vy pro to nemusíte hnout ani prstem.</p>
+                <a href="#kontakt" class="btn btn-primary btn-lg">TO POTŘEBUJI</a>
+            </div>
+            
+            <!-- Dekorační 3D nebo glass prvek (náhrada mobilu z vizuálu) -->
+            <div class="hero-visual fade-in delay-1">
+                <div class="glass-sphere"></div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <a href="#sluzby" aria-label="Posunout dolů"><i class="bi bi-chevron-down"></i></a>
         </div>
     </header>
 
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu">
-        <nav class="mobile-menu__nav">
-            <a href="#sluzby" class="mobile-menu__link">Služby</a>
-            <a href="#jak-to-probiha" class="mobile-menu__link">Jak to probíhá</a>
-            <a href="#cenik" class="mobile-menu__link">Ceník</a>
-            <a href="#priklady" class="mobile-menu__link">Příklady z praxe</a>
-            <a href="#recenze" class="mobile-menu__link">Recenze</a>
-            <a href="#faq" class="mobile-menu__link">FAQ</a>
-            <a href="#kontakt" class="mobile-menu__link">Kontakt</a>
-        </nav>
-    </div>
-
     <main>
-        <!-- Hero Section -->
-        <!-- Hero Section -->
-        <section class="hero" id="hero">
-            <div class="container hero__container">
-                <div class="hero__content">
-                    <h1 class="hero__title">
-                        Jste v <span class="highlight">dluhové pasti</span> <br>a&nbsp;vyhrožují vám nebankovní
-                        společnosti?
-                    </h1>
-                    <p class="hero__text">
-                        Pomůžeme vám, zbavíme vás dluhů a vymůžeme přeplacené úroky zpět.
-                    </p>
-                    <a href="#kontakt" class="btn btn--primary btn--large">TO POTŘEBUJI <i
-                            class="bi bi-arrow-right"></i></a>
-
-                    <div class="hero__trust">
-                        <div class="hero__trust-item">
-                            <i class="bi bi-shield-check"></i>
-                            <span>Diskrétní přístup</span>
-                        </div>
-                        <div class="hero__trust-item">
-                            <i class="bi bi-star-fill"></i>
-                            <span>Ověřené řešení</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section class="section services" id="sluzby">
+        <!-- Služby - Co vyřešíme -->
+        <section id="sluzby" class="section">
             <div class="container">
-                <div class="section-header text-center">
-                    <h2 class="section-title">Co vše umíme vyřešit</h2>
-                    <p class="section-subtitle">Naše služby na míru vaší situaci</p>
+                <div class="section-header fade-in">
+                    <h2>Co vše umíme vyřešit</h2>
+                    <p>Zařídíme, abyste mohli znovu v klidu spát.</p>
+                </div>
+                
+                <div class="bento-grid features-grid">
+                    <div class="bento-card glass-card fade-in delay-1">
+                        <i class="bi bi-graph-down-arrow icon-large text-accent"></i>
+                        <h3>Lichvářské úroky</h3>
+                        <p>Zrušíme neúměrně vysoké úroky, které vás strhávají dolů a ušetříme vám peníze.</p>
+                    </div>
+                    <div class="bento-card glass-card fade-in delay-2">
+                        <i class="bi bi-file-earmark-x icon-large text-accent"></i>
+                        <h3>Nevýhodné smlouvy</h3>
+                        <p>Zneplatníme smlouvy, které porušují zákon a stahují vás do spirály dluhů.</p>
+                    </div>
+                    <div class="bento-card glass-card fade-in delay-3">
+                        <i class="bi bi-bank icon-large text-accent"></i>
+                        <h3>Nebankovní půjčky</h3>
+                        <p>Zaměřujeme se primárně na nekalé praktiky nebankovního sektoru.</p>
+                    </div>
+                    <div class="bento-card glass-card fade-in delay-1">
+                        <i class="bi bi-shield-x icon-large text-accent"></i>
+                        <h3>Dluhová past</h3>
+                        <p>Vytáhneme vás ze začarovaného kruhu vytloukání půjčky půjčkou.</p>
+                    </div>
+                    <div class="bento-card glass-card fade-in delay-2">
+                        <i class="bi bi-calendar2-check icon-large text-accent"></i>
+                        <h3>Splátkový kalendář</h3>
+                        <p>Dohodneme únosné splátky na zbytek doložené a prokazatelné jistiny.</p>
+                    </div>
+                    <div class="bento-card glass-card fade-in delay-3">
+                        <i class="bi bi-briefcase icon-large text-accent"></i>
+                        <h3>Podnikatelské úvěry</h3>
+                        <p>Pomůžeme i s problémy u financování tzv. na IČO pro drobné podnikatele.</p>
+                    </div>
                 </div>
 
-                <div class="grid grid--3">
-                    <div class="card service-card glass">
-                        <div class="service-card__icon"><i class="bi bi-percent"></i></div>
-                        <h3 class="service-card__title">Lichvářské úroky</h3>
-                        <p>Zastavíme neoprávněné navyšování vašeho dluhu o nezákonné úroky.</p>
-                    </div>
-                    <div class="card service-card glass">
-                        <div class="service-card__icon"><i class="bi bi-file-earmark-x"></i></div>
-                        <h3 class="service-card__title">Nevýhodné smlouvy</h3>
-                        <p>Analyzujeme vaše smlouvy a najdeme v nich právní kličky.</p>
-                    </div>
-                    <div class="card service-card glass">
-                        <div class="service-card__icon"><i class="bi bi-bank"></i></div>
-                        <h3 class="service-card__title">Nebankovní půjčky</h3>
-                        <p>Řešíme problémy s agresivními nebankovními poskytovateli.</p>
-                    </div>
-                    <div class="card service-card glass">
-                        <div class="service-card__icon"><i class="bi bi-life-preserver"></i></div>
-                        <h3 class="service-card__title">Dluhová past</h3>
-                        <p>Pomůžeme vám vystoupit z kolotoče vytloukání půjčky půjčkou.</p>
-                    </div>
-                    <div class="card service-card glass">
-                        <div class="service-card__icon"><i class="bi bi-calendar-check"></i></div>
-                        <h3 class="service-card__title">Splátkové kalendáře</h3>
-                        <p>Vyjednáme reálný splátkový kalendář na zbytek jistiny.</p>
-                    </div>
-                    <div class="card service-card glass">
-                        <div class="service-card__icon"><i class="bi bi-briefcase"></i></div>
-                        <h3 class="service-card__title">Podnikatelské úvěry</h3>
-                        <p>Ani půjčky na IČO pro nás nejsou problém. Pomůžeme i vám.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section class="section features bg-light" id="proc-my">
-            <div class="container">
-                <div class="section-header text-center">
-                    <h2 class="section-title">Proč si vybrat nás?</h2>
-                    <p class="section-subtitle">Jsme na vaší straně od začátku až do konce</p>
-                </div>
-
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <div class="feature-number"><i class="bi bi-check-lg"></i></div>
-                        <div>
-                            <h4>Klient je pro nás na 1. místě</h4>
-                            <p>Nečekáme, neodsuzujeme – jednáme.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-number"><i class="bi bi-check-lg"></i></div>
-                        <div>
-                            <h4>Zařídíme vše od A do Z</h4>
-                            <p>O nic se nemusíte starat, vše zajistíme za vás.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-number"><i class="bi bi-check-lg"></i></div>
-                        <div>
-                            <h4>Spolupracujeme s renomovanou právní kanceláří</h4>
-                            <p>Kryje nám záda při řešení složitějších případů.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-number"><i class="bi bi-check-lg"></i></div>
-                        <div>
-                            <h4>Ani půjčky na IČO pro nás nejsou problém</h4>
-                            <p>Pomůžeme i s podnikatelskými úvěry.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Process Section -->
-        <section class="section process" id="jak-to-probiha">
-            <div class="container">
-                <div class="section-header text-center">
-                    <h2 class="section-title mb-5">Jak to probíhá?</h2>
-                </div>
-
-                <div class="process-steps">
-                    <!-- Step 1 -->
-                    <div class="step">
-                        <div class="step__marker">1</div>
-                        <div class="step__content glass">
-                            <h3>Ozvěte se nám!</h3>
-                            <p>Posoudíme vaši situaci zdarma a nezávazně.</p>
-                        </div>
-                    </div>
-                    <!-- Step 2 -->
-                    <div class="step">
-                        <div class="step__marker">2</div>
-                        <div class="step__content glass">
-                            <h3>Podepisujeme smlouvu</h3>
-                            <p>Připravíme plnou moc a pustíme se do práce.</p>
-                        </div>
-                    </div>
-                    <!-- Step 3 -->
-                    <div class="step">
-                        <div class="step__marker">3</div>
-                        <div class="step__content glass">
-                            <h3>Přehled plateb</h3>
-                            <p>Poskytnete nám přehled všech plateb v rámci půjčky.</p>
-                        </div>
-                    </div>
-                    <!-- Step 4 -->
-                    <div class="step">
-                        <div class="step__marker">4</div>
-                        <div class="step__content glass">
-                            <h3>Vyjednávání</h3>
-                            <p>Oslovíme věřitele a začneme tvrdě vyjednávat.</p>
-                        </div>
-                    </div>
-                    <!-- Step 5 -->
-                    <div class="step">
-                        <div class="step__marker">5</div>
-                        <div class="step__content glass">
-                            <h3>Dohoda a finance</h3>
-                            <p>S věřitelem uzavíráme dohodu a přijímáme finance.</p>
-                        </div>
-                    </div>
-                    <!-- Step 6 -->
-                    <div class="step">
-                        <div class="step__marker">6</div>
-                        <div class="step__content glass">
-                            <h3>Peníze na účet</h3>
-                            <p>Obratem vám získané prostředky zasíláme na účet.</p>
-                        </div>
-                    </div>
-                    <!-- Step 7 -->
-                    <div class="step">
-                        <div class="step__marker">7</div>
-                        <div class="step__content glass">
-                            <h3>Hotovo!</h3>
-                            <p>Gratulujeme vám, máte po problémech!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pricing Section -->
-        <section class="section pricing bg-light" id="cenik">
-            <div class="container">
-                <div class="pricing-card glass mx-auto">
-                    <h2 class="section-title text-center mb-5">Kolik vás to bude stát?</h2>
-                    <div class="pricing-content text-center">
-                        <p class="pricing-highlight">Z vaší peněženky nepůjde ani koruna.</p>
-                        <ul class="pricing-list">
-                            <li><i class="bi bi-check-circle-fill"></i> Naše odměna je 20% z vymožených úroků a
-                                odpuštěných dluhů.</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Odměnu účtujeme až po zdárně vyřešeném a
-                                ukončeném případu.</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Odečteme ji z vymožené částky, kterou obratem
-                                posíláme na váš účet.</li>
+                <!-- Jsme na vaší straně sekce v rámci služeb -->
+                <div class="why-us fade-in mt-large">
+                    <div class="why-us-content bento-card glass-card wide-card">
+                        <h2>Jsme na vaší straně</h2>
+                        <ul class="check-list">
+                            <li>
+                                <strong><i class="bi bi-check-circle-fill"></i> Klient je pro nás na 1. místě</strong>
+                                <span>Nečekáme a neodsuzujeme, ale okamžitě jednáme.</span>
+                            </li>
+                            <li>
+                                <strong><i class="bi bi-check-circle-fill"></i> Zařídíme vše od A do Z</strong>
+                                <span>O nic se nemusíte starat, my vše zanalyzujeme a zajistíme za vás.</span>
+                            </li>
+                            <li>
+                                <strong><i class="bi bi-check-circle-fill"></i> Spolupráce s právní kanceláří</strong>
+                                <span>Kryje nám záda při řešení objektivně složitějších právních případů.</span>
+                            </li>
+                            <li>
+                                <strong><i class="bi bi-check-circle-fill"></i> Není pro nás problém ani půjčka na IČO</strong>
+                                <span>Pomůžeme vám efektivně také s podnikatelskými úvěry.</span>
+                            </li>
                         </ul>
-                        <p class="mt-4 text-muted">Férový přístup. Žádné skryté poplatky předem.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Examples Section -->
-        <section class="section examples" id="priklady">
+        <!-- Jak to probíhá -->
+        <section id="postup" class="section bg-light">
             <div class="container">
-                <h2 class="section-title text-center mb-5">Příklady z praxe</h2>
+                <div class="section-header fade-in">
+                    <h2>Jak to probíhá?</h2>
+                    <p>Transparentní proces. Rychlé řešení.</p>
+                </div>
 
-                <div class="grid grid--2">
-                    <!-- Case Study 1 -->
-                    <div class="card case-card glass">
-                        <div class="case-card__header">
-                            <i class="bi bi-person-fill"></i>
-                            <h3>Příběh pana Gamblera</h3>
-                        </div>
-                        <div class="case-card__body">
-                            <p>Obrátil se na nás gambler s prosbou o pomoc s vyřízením insolvence s tím, že dluží
-                                několika poskytovatelům rychlých půjček celkem 278.000,- Kč a nemá jiné řešení. Po
-                                analýze smluv a obratů však bylo zjištěno, že původní jistiny byly celkem jen 80.000,- a
-                                že věřitelům od roku 2023 již přeplatil 180.000,-&nbsp;Kč.</p>
-                            <div class="case-result success">
-                                <h4><i class="bi bi-lightning-charge-fill"></i> Výsledek</h4>
-                                <p>Smlouvy jsme zneplatnili a zařídili smíry, kdy byly klientovi dluhy odpuštěny a
-                                    společnosti mu vrátily přeplacené úroky 162.000,- Kč.</p>
-                                <div class="save-tag">Klientovi jsme tak ušetřili 360.000,-Kč</div>
-                            </div>
+                <div class="timeline fade-in">
+                    <div class="timeline-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content glass-card">
+                            <h3>Ozvěte se nám!</h3>
+                            <p>Zavoláte či napíšete. Zcela zdarma posoudíme vaši finanční situaci.</p>
                         </div>
                     </div>
-
-                    <!-- Case Study 2 -->
-                    <div class="card case-card glass">
-                        <div class="case-card__header">
-                            <i class="bi bi-person-hearts"></i>
-                            <h3>Příběh maminky samoživitelky</h3>
+                    <div class="timeline-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content glass-card">
+                            <h3>Příprava pomoci</h3>
+                            <p>Připravíme plnou moc a bezpečně společně podepisujeme smlouvu o zastoupení.</p>
                         </div>
-                        <div class="case-card__body">
-                            <p>Obrátila se na nás maminka samoživitelka, která se dostala do dluhové pasti, kdy
-                                vytloukala půjčku půjčkou. Skončilo to půjčkou jistiny ve výši 40.000,- Kč a společnost
-                                po ní požadovala vrátit 75.000,- Kč. Společnosti však již 30.000,- Kč splatila, tedy na
-                                jistině dlužila už jen 10.000,- Kč.</p>
-                            <div class="case-result success">
-                                <h4><i class="bi bi-lightning-charge-fill"></i> Výsledek</h4>
-                                <p>Skrze zneplatnění smluv jsme jí se společností dohodli splátkový kalendář na 11
-                                    měsíčních splátek po 11.000,- Kč.</p>
-                                <div class="save-tag">Klientce jsme tak ušetřili 64.000,- Kč</div>
-                            </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content glass-card">
+                            <h3>Přehled plateb</h3>
+                            <p>Poskytnete nám detailní přehled všech plateb v rámci konkrétní půjčky.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content glass-card">
+                            <h3>Vyjednávání</h3>
+                            <p>My následně oslovíme věřitele a tvrdě, ale profesionálně začneme vyjednávat.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content glass-card">
+                            <h3>Výhoda pro vás</h3>
+                            <p>S věřitelem uzavíráme dohodu a my přijímáme pro vás odměnové finance.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content glass-card">
+                            <h3>Vyplacení</h3>
+                            <p>Okamžitě obratem vám všechny získané prostředky zasíláme na váš bankovní účet.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-number"><i class="bi bi-star-fill text-yellow"></i></div>
+                        <div class="step-content glass-card step-final">
+                            <h3>Gratulujeme vám!</h3>
+                            <p>Máte po problémech a můžete opět klidně dýchat.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Reviews Section -->
-        <section class="section reviews bg-light" id="recenze">
+        <!-- Ceník -->
+        <section id="cenik" class="section">
             <div class="container">
-                <h2 class="section-title text-center mb-5">Co o nás říkají klienti</h2>
-
-                <div class="reviews-slider">
-                    <div class="reviews-track">
-                        <div class="review-card glass" data-tilt>
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                            <p class="review-text">"Děkuji, s vámi je ten život hned lehčí."</p>
-                            <p class="review-author">- Zuzana Z.</p>
+                <div class="price-container fade-in bento-card glass-card">
+                    <div class="price-content">
+                        <h2>Kolik vás to bude stát?</h2>
+                        <div class="price-highlight">
+                            <span class="big-number">0 Kč</span>
+                            <span class="price-text">Z vaší peněženky nepůjde dopředu ani koruna.</span>
                         </div>
-                        <div class="review-card glass" data-tilt>
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                            <p class="review-text">"Peníze došly, smekám, jste frajer."</p>
-                            <p class="review-author">- Pavel B.</p>
-                        </div>
-                        <div class="review-card glass" data-tilt>
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                            <p class="review-text">"Jste doslova finanční anděl."</p>
-                            <p class="review-author">- Klára S.</p>
-                        </div>
-                        <div class="review-card glass" data-tilt>
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                            <p class="review-text">"Absolutně vás obdivuji, kolika lidem se snažíte pomoc jak nejvíce
-                                můžete, patří vám jedno velké díky."</p>
-                            <p class="review-author">- Adriana V.</p>
-                        </div>
+                        <p class="mt-medium">Naše odměna činí <strong>20 % z vymožených úroků a odpuštěných dluhů.</strong></p>
+                        <p>Odměnu účtujeme až po zdárně vyřešeném a zcela ukončeném případu. Automaticky ji odečteme z vymožené částky, kterou vám vzápětí rovnou posíláme na váš účet. Žádné skryté poplatky, stoprocentní férovost a transparentnost.</p>
+                        <a href="#kontakt" class="btn btn-primary mt-medium">Chci konzultaci zdarma</a>
                     </div>
-
-                    <!-- Slider Navigation (optional, adding dots for JS control) -->
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section class="section faq" id="faq">
-            <div class="container md-width">
-                <h2 class="section-title text-center mb-5">Časté dotazy</h2>
-                <div class="accordion">
-                    <div class="accordion-item glass">
-                        <button class="accordion-header">
-                            Kolik mě to bude stát?
-                            <i class="bi bi-chevron-down"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <p>Z vaší kapsy nepůjde ani koruna. Naši provizi si bereme z vymožených částek od
-                                úvěrujících společností.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item glass">
-                        <button class="accordion-header">
-                            S jakými půjčkami mi pomůžete?
-                            <i class="bi bi-chevron-down"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <p>Pomůžeme vám s půjčkami od nebankovních společností.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item glass">
-                        <button class="accordion-header">
-                            Mám několik úvěrů, vztahuje se na to služba také?
-                            <i class="bi bi-chevron-down"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <p>Ano, každý úvěr posoudíme zvlášť a navrhneme vám řešení.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item glass">
-                        <button class="accordion-header">
-                            Co když moje úvěry nevyřešíte, kolik mě to bude stát?
-                            <i class="bi bi-chevron-down"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <p>V případě neúspěchu vám žádnou provizi neúčtujeme.</p>
-                        </div>
+                    <div class="price-graphic">
+                        <i class="bi bi-piggy-bank"></i>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section class="section contact" id="kontakt">
+        <!-- Příklady z praxe -->
+        <section id="praxe" class="section bg-light">
             <div class="container">
-                <div class="contact-info text-center">
-                    <h2 class="section-title mb-5">Kontaktujte nás</h2>
-                    <p class="mb-5">Neváhejte se na nás obrátit. Jsme tu pro vás.</p>
+                <div class="section-header fade-in">
+                    <h2>Příklady z naší praxe</h2>
+                    <p>Skutečné příběhy lidí, kterým jsme pomohli k finanční svobodě.</p>
+                </div>
 
-                    <div class="contact-grid">
-                        <div class="contact-item">
-                            <i class="bi bi-envelope-fill"></i>
-                            <div class="contact-item-text">
-                                <strong>E-mail</strong>
-                                <a href="mailto:info@dluhypomoc.cz">info@dluhypomoc.cz</a>
+                <div class="cases-grid">
+                    <div class="case-card glass-card fade-in delay-1">
+                        <div class="case-icon"><i class="bi bi-person-fill-exclamation"></i></div>
+                        <h3>Příběh pana gamblera</h3>
+                        <div class="case-numbers">
+                            <div class="stat">
+                                <span class="label">Původní dluh</span>
+                                <span class="value text-danger">278.000 Kč</span>
+                            </div>
+                            <div class="stat">
+                                <span class="label">Skutečná jistina</span>
+                                <span class="value text-success">80.000 Kč</span>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="bi bi-geo-alt-fill"></i>
-                            <div class="contact-item-text">
-                                <strong>Adresa</strong>
-                                <span>Švermova 268, 460 10, Liberec 10</span>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="bi bi-card-heading"></i>
-                            <div class="contact-item-text">
-                                <strong>Identifikace</strong>
-                                <span>IČ: 75569965</span>
-                            </div>
+                        <p>Obrátil se na nás klient s prosbou o pomoc s vyřízením insolvence s tím, že dluží několika poskytovatelům rychlých půjček a nemá řešení. Po analýze jsme zjistili, že věřitelům od roku 2023 přeplatil 180.000 Kč.</p>
+                        <div class="case-result">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            <p>Smlouvy jsme zneplatnili, zařídili smír (dluhy odpuštěny) a společnosti vrátily klientovi úroky 162.000 Kč. <strong>Ušetřeno celkem 360.000 Kč.</strong></p>
                         </div>
                     </div>
-                    <p class="legal-note mt-5">FO Zapsaná v Živnostenském Rejstříku v Liberci</p>
+
+                    <div class="case-card glass-card fade-in delay-2">
+                        <div class="case-icon"><i class="bi bi-person-hearts"></i></div>
+                        <h3>Maminka samoživitelka</h3>
+                        <div class="case-numbers">
+                            <div class="stat">
+                                <span class="label">Požadováno vrátit</span>
+                                <span class="value text-danger">75.000 Kč</span>
+                            </div>
+                            <div class="stat">
+                                <span class="label">Zbývající jistina</span>
+                                <span class="value text-success">10.000 Kč</span>
+                            </div>
+                        </div>
+                        <p>Dostala se do dluhové pasti (vytloukala půjčku půjčkou). Na fiktivní jistině 40.000 Kč po ní požadovali 75 tisíc, přičemž splatila již 30 tisíc Kč.</p>
+                        <div class="case-result">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            <p>Skrze zneplatnění smluv jsme dohodnuli splátkový kalendář pro zbytek dluhu. <strong>Klientce jsme ušetřili 64.000 Kč.</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recenze a FAQ -->
+        <div class="compound-sections">
+            <!-- Recenze -->
+            <section id="recenze" class="section">
+                <div class="container">
+                    <div class="section-header fade-in">
+                        <h2>Co o nás říkají klienti</h2>
+                    </div>
+                    <div class="reviews-grid">
+                        <div class="review-card glass-card fade-in delay-1">
+                            <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                            <p>"Děkuji, s vámi je ten život hned lehčí."</p>
+                            <span class="author">- Zuzana Z.</span>
+                        </div>
+                        <div class="review-card glass-card fade-in delay-2">
+                            <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                            <p>"Peníze došly, smekám, jste frajer."</p>
+                            <span class="author">- Pavel B.</span>
+                        </div>
+                        <div class="review-card glass-card fade-in delay-3">
+                            <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                            <p>"Jste doslova finanční anděl."</p>
+                            <span class="author">- Klára S.</span>
+                        </div>
+                        <div class="review-card glass-card fade-in delay-4">
+                            <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                            <p>"Absolutně vás obdivuji, kolika lidem se snažíte pomoc jak nejvíce můžete, patří vám jedno velké díky za nás všechny."</p>
+                            <span class="author">- Adriana V.</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section id="faq" class="section pb-large">
+                <div class="container">
+                    <div class="section-header fade-in">
+                        <h2>Často kladené otázky</h2>
+                    </div>
+                    <div class="faq-container fade-in delay-1">
+                        <details class="faq-item glass-card">
+                            <summary>Kolik mě to bude stát? <i class="bi bi-plus-lg"></i></summary>
+                            <div class="faq-content">
+                                <p>Z Vaší kapsy nepůjde ani koruna. Naši provizi si bereme z vymožených částek od úvěrujících společností a to 20 % z úspěchu.</p>
+                            </div>
+                        </details>
+                        <details class="faq-item glass-card">
+                            <summary>S jakými půjčkami mi pomůžete? <i class="bi bi-plus-lg"></i></summary>
+                            <div class="faq-content">
+                                <p>Specializujeme se a pomůžeme vám úspěšně s půjčkami od nebankovních společností, které mají často nenekalosoutěžní nebo protizákonné podmínky.</p>
+                            </div>
+                        </details>
+                        <details class="faq-item glass-card">
+                            <summary>Mám několik úvěrů, vztahuje se na to služba také? <i class="bi bi-plus-lg"></i></summary>
+                            <div class="faq-content">
+                                <p>Ano, samozřejmě. Každý jednotlivý úvěr posoudíme maximálně zvlášť a navrhneme vám komplexní a účinné řešení plně na míru.</p>
+                            </div>
+                        </details>
+                        <details class="faq-item glass-card">
+                            <summary>Co když moje úvěry nevyřešíte, kolik mě to bude stát? <i class="bi bi-plus-lg"></i></summary>
+                            <div class="faq-content">
+                                <p>Pracujeme pouze přesně na základě "No win - No fee". Tedy v případě neúspěchu vám žádnou provizi ani skryté poplatky neúčtujeme.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Aktuality / Notion Data -->
+        <section id="aktuality" class="section bg-light">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2>Novinky z praxe</h2>
+                    <p>Nejnovější tipy a zprávy, jak se bránit nekalým praktikám.</p>
+                </div>
+                <div id="notion-data-container" class="notion-grid">
+                    <!-- Zde se přes JS načtou data z CSV -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontakt -->
+        <section id="kontakt" class="section">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info bento-card glass-card fade-in">
+                        <h2>Spojte se s námi</h2>
+                        <p>Zavolejte nám nebo napište e-mail, začneme ihned jednat.</p>
+                        
+                        <ul class="contact-list">
+                            <li><i class="bi bi-envelope-fill"></i> <a href="mailto:info@dluhypomoc.cz">info@dluhypomoc.cz</a></li>
+                            <li><i class="bi bi-geo-alt-fill"></i> Sídlo: Švermova 268, 460 10, Liberec 10</li>
+                            <li><i class="bi bi-card-heading"></i> IČO: 75569965</li>
+                            <li><i class="bi bi-info-circle-fill"></i> FO Zapsaná v Živnostenském Rejstříku v Liberci</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="contact-form-wrapper bento-card glass-card fade-in delay-1">
+                        <h3>Napište nám</h3>
+                        <form action="mailto:info@dluhypomoc.cz" method="POST" enctype="text/plain" id="contactForm">
+                            <div class="form-group">
+                                <label for="jmeno">Jméno a příjmení *</label>
+                                <input type="text" id="jmeno" name="Jmeno" required placeholder="Jan Novák">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail *</label>
+                                <input type="email" id="email" name="Email" required placeholder="vas@email.cz">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefon">Telefon</label>
+                                <input type="tel" id="telefon" name="Telefon" placeholder="+420 123 456 789">
+                            </div>
+                            <div class="form-group">
+                                <label for="zprava">Vaše situace *</label>
+                                <textarea id="zprava" name="Zprava" rows="4" required placeholder="Stručně popište, kolik máte půjček a od koho..."></textarea>
+                            </div>
+                            <!-- Honeypot -->
+                            <div class="form-group honeypot" style="display:none;" aria-hidden="true">
+                                <label for="mesto">Město (nevyplňujte)</label>
+                                <input type="text" id="mesto" name="Mesto" tabindex="-1" autocomplete="off">
+                            </div>
+                            <!-- Zpracovani udaju -->
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="suhlas" name="Souhlas" required>
+                                <label for="suhlas">Souhlasím se zpracováním osobních údajů.</label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary submit-btn">Odeslat nezávaznou poptávku</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Patička -->
     <footer class="footer">
-        <div class="container footer__container text-center">
-            <p>&copy; 2024 Dluhypomoc. Všechna práva vyhrazena.</p>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="Obrazky/Logo_new.png" alt="DluhyPomoc Logo" class="footer-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <h3 style="display:none;">DluhyPomoc</h3>
+                    <p>Jsme experti na problematiku nebankovních společností a ochranu spotřebitele.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Rychlé odkazy</h4>
+                    <ul>
+                        <li><a href="#sluzby">Naše služby</a></li>
+                        <li><a href="#postup">Postup řešení</a></li>
+                        <li><a href="#cenik">Ceník a odměny</a></li>
+                        <li><a href="#praxe">Reference</a></li>
+                        <li><a href="#aktuality">Novinky</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Legislativní údaje</h4>
+                    <p>IČO: 75569965</p>
+                    <p>Sídlo: Švermova 268, Liberec 10</p>
+                    <p>FO zapsaná v Živnostenském Rejstříku</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DluhyPomoc.cz - Všechna práva vyhrazena.</p>
+                <div class="footer-legal">
+                    <a href="#">Ochrana údajů (GDPR)</a>
+                    <a href="#">Podmínky použití</a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
-</body>
+    <!-- Chybová komponenta (ukáže se např. z JS při chybě nebo jako fallback) -->
+    <div id="error-screen" class="error-screen" style="display: none;">
+        <div class="container text-center">
+            <i class="bi bi-emoji-frown icon-huge text-accent"></i>
+            <h2>Stránka nenalezena</h2>
+            <p>Omlouváme se, ale tuto stránku se nepodařilo najít.</p>
+            <a href="/" class="btn btn-primary mt-medium">Zpět na začátek</a>
+        </div>
+    </div>
 
+    <!-- Scripts -->
+    <script src="script.js" defer></script>
+</body>
 </html>

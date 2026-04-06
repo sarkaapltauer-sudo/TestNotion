@@ -1,11 +1,12 @@
 # Dluhypomoc.cz
 
-Webová stránka ponúkajúca pomoc ľuďom v dlhovej pasci.
-Hlavné služby:
-- Riešenie lichvárskych úrokov
-- Zneplatnenie nevýhodných zmlúv
-- Pomoc s nebankovými pôžičkami
-- Oddlženie a insolvencia
+**Obsah webu:**
+Služba pomáhající dostat se z dluhové pasti, zrušit nevýhodné smlouvy a vymoci přeplacené úroky od nebankovních společností. Zařizujeme vše od A do Z, spolupracujeme s právní kanceláří.
 
-Kontakt: info@dluhypomoc.cz
-Lokalita: Liberec, Česká republika
+**Cena:**
+Z kapsy klient neplatí nic, odměna je účtována ve výši 20 % z vymožené částky až po zdárném dořešení, která je rovnou stržena z klientovi navrácené částky.
+
+**Kontakt:**
+Email: info@dluhypomoc.cz
+Sídlo: Švermova 268, 460 10, Liberec 10
+IČ: 75569965
