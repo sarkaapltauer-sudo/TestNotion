@@ -107,99 +107,130 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* --- Načtení dat z CSV (Notion Export) --- */
-    async function loadNotionData() {
+    /* --- Načítání aktualit z Notion API s CSV fallbackem --- */
+    const loadNotionData = async () => {
+        const notionList = document.querySelector('.notion-list');
+        if (!notionList) return;
+
         try {
-            // Název souboru CSV z aktuální složky
-            const response = await fetch('Testnotion 33afc6bada9e80108c98c3d28f2a8304.csv');
-            if (!response.ok) throw new Error("Nelze načíst CSV soubor");
-            
-            const csvText = await response.text();
-            parseAndRenderCSV(csvText);
-        } catch (error) {
-            console.error("Chyba při načítání CSV:", error);
-            const container = document.getElementById('notion-data-container');
-            if (container) {
-                container.innerHTML = '<p class="text-center text-muted" style="grid-column: 1/-1;">Žádné aktuální novinky nejsou k dispozici.</p>';
+            // 1. Primární pokus o načtení z vlastního PHP API
+            const response = await fetch('api/get-data.php');
+            if (!response.ok) {
+                throw new Error('PHP API selhalo (' + response.status + ')');
             }
-        }
-    }
-
-    function parseCSVLine(text) {
-        let result = [];
-        let curVal = '';
-        let inQuotes = false;
-        for (let i = 0; i < text.length; i++) {
-            const char = text[i];
-            if (inQuotes) {
-                if (char === '"' && text[i + 1] === '"') {
-                    curVal += '"';
-                    i++;
-                } else if (char === '"') {
-                    inQuotes = false;
-                } else {
-                    curVal += char;
-                }
+            const result = await response.json();
+            
+            // Jakmile přijde výsledek
+            if (result.data && result.data.length > 0) {
+                renderNotionData(result.data, notionList);
             } else {
-                if (char === '"') {
-                    inQuotes = true;
-                } else if (char === ',') {
-                    result.push(curVal);
-                    curVal = '';
-                } else {
-                    curVal += char;
+                showEmptyMessage(notionList);
+            }
+        } catch (error) {
+            console.warn('API selhalo, probíhá pokus o fallback z lokálního CSV:', error);
+            // 2. Fallback: pokus o načtení z CSV
+            try {
+                // Přesný název CSV souboru
+                const csvResponse = await fetch('Testnotion 33afc6bada9e80108c98c3d28f2a8304.csv');
+                if (!csvResponse.ok) {
+                    throw new Error('CSV fallback selhal');
                 }
+                const csvText = await csvResponse.text();
+                const parsedData = parseCSV(csvText);
+                
+                if (parsedData && parsedData.length > 0) {
+                    renderNotionData(parsedData, notionList);
+                } else {
+                    showEmptyMessage(notionList);
+                }
+            } catch (csvError) {
+                console.error('Kompletní chyba načítání dat (API i CSV selhalo):', csvError);
+                showEmptyMessage(notionList);
             }
         }
-        result.push(curVal);
-        return result;
-    }
+    };
 
-    function parseAndRenderCSV(csvText) {
-        const lines = csvText.split(/\r?\n/).filter(line => line.trim() !== '');
-        if (lines.length < 2) return; // První řádek hlavičky, takže musí být alespoň 2
+    const parseCSV = (csvText) => {
+        const lines = csvText.trim().split('\n');
+        if (lines.length <= 1) return []; // Máme pouze hlavičku
         
-        const headers = parseCSVLine(lines[0]);
-        const dataContainer = document.getElementById('notion-data-container');
-        if (!dataContainer) return;
-        
-        let html = '';
-        
+        // Struktura sloupců (na základě exportu: Test notion, Text 1, Date, Files & media)
+        const result = [];
+        // Regex pro oddělení čárkou, ale zachování textu v uvozovkách dohromady
+        const re = /,(?=(?:(?:[^"]*"){2})*[^"]*$)/;
+
         for (let i = 1; i < lines.length; i++) {
-            const values = parseCSVLine(lines[i]);
+            const line = lines[i];
+            if (!line.trim()) continue;
             
-            const rowData = {};
-            headers.forEach((header, index) => {
-                rowData[header.trim()] = values[index] ? values[index].trim() : '';
-            });
+            const row = line.split(re).map(val => val.replace(/^"|"$/g, '').trim());
+            const [testNotion, text1, date, filesMedia] = row;
             
-            // Kolonky z CSV podle názvů sloupců
-            const title = rowData['Test notion'] || 'Novinka';
-            const textContent = rowData['Text 1'] || '';
-            const date = rowData['Date'] || '';
-            const media = rowData['Files & media'] || '';
-
-            // Skládáme html kód s využitím zavedeného designu bento-card a glass-card
-            html += `
-                <article class="bento-card glass-card notion-card fade-in delay-${(i % 3) + 1}">
-                    ${media ? `<div class="notion-media"><img src="${media}" alt="${title}" onerror="this.style.display='none'" loading="lazy"></div>` : ''}
-                    <div class="notion-content">
-                        ${date ? `<span class="notion-date"><i class="bi bi-calendar3"></i> ${date}</span>` : ''}
-                        <h3>${title}</h3>
-                        ${textContent ? `<p>${textContent}</p>` : ''}
-                    </div>
-                </article>
-            `;
+            // "Text 1" představuje nadpis v poskytnutém CSV
+            if (text1) {
+                result.push({
+                    title: text1,
+                    date: date || '',
+                    description: testNotion || ''
+                });
+            }
         }
-        
-        dataContainer.innerHTML = html;
-        
-        // Znovu aplikujeme Intersection Observer na nově přidané prvky
-        const newFaders = dataContainer.querySelectorAll('.fade-in');
-        newFaders.forEach(fader => {
-            appearOnScroll.observe(fader);
-        });
-    }
+        return result;
+    };
 
+    const renderNotionData = (data, container) => {
+        container.innerHTML = ''; // Vyčištění hardcoded obsahu
+        let delay = 1;
+        
+        // Ikonky, případně rotace mezi několika typy
+        const icons = ['bi-rocket-takeoff-fill', 'bi-shield-fill-check', 'bi-braces-asterisk'];
+        
+        data.forEach((item, index) => {
+            // Formátování data
+            let formattedDate = item.date;
+            if (item.date) {
+                const d = new Date(item.date);
+                if (!isNaN(d.getTime())) {
+                    formattedDate = d.toLocaleDateString('cs-CZ', {
+                        year: 'numeric', month: 'long', day: 'numeric'
+                    });
+                }
+            }
+            
+            const icon = icons[index % icons.length];
+
+            const card = document.createElement('div');
+            card.className = `bento-card glass-card notion-single-box fade-in delay-${delay}`;
+            card.innerHTML = `
+                <div class="notion-icon-wrapper">
+                    <i class="bi ${icon} text-accent"></i>
+                </div>
+                <div class="notion-box-content">
+                    <div class="notion-date"><i class="bi bi-calendar3"></i> ${formattedDate}</div>
+                    <h3>${item.title}</h3>
+                    <p>${item.description || 'Pro více informací sledujte náš portál.'}</p>
+                </div>
+            `;
+            container.appendChild(card);
+            
+            // Pro dynamicky vložené prvky zajistíme viditelnost s animací
+            setTimeout(() => {
+                card.classList.add('visible');
+            }, 100 + (delay * 150));
+
+            delay++;
+            if (delay > 3) delay = 1;
+        });
+    };
+
+    const showEmptyMessage = (container) => {
+        container.innerHTML = `
+            <div class="bento-card glass-card fade-in visible" style="text-align: center; width: 100%; grid-column: 1 / -1;">
+                <h3 style="margin-bottom: 0;">Vaše věta.</h3>
+            </div>
+        `;
+    };
+
+    // Spouštíme stahování dat
     loadNotionData();
 });

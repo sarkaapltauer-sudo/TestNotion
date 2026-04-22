@@ -1,0 +1,5 @@
+# Ignorovat reálné klíče k API (ochrana před nahráním na GitHub)
+_private/notion-config.php
+
+# Ignorovat vygenerovanou cache
+_private/notion_cache.json
